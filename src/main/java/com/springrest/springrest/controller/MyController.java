@@ -43,6 +43,7 @@ public class MyController {
         this.courseService.updateCourse(course);
         return "Updated Successfully";
     }
+
     @DeleteMapping("/courses/{id}")
     public String deleteCourse(@PathVariable long id){
         this.courseService.deleteById(id);
