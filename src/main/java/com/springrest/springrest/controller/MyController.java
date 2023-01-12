@@ -2,6 +2,8 @@ package com.springrest.springrest.controller;
 
 import com.springrest.springrest.dao.CourseService;
 import com.springrest.springrest.entity.Course;
+import com.springrest.springrest.model.CatFactResponse;
+import com.springrest.springrest.services.CatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,9 @@ import java.util.List;
 public class MyController {
    @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private CatService catService;
 
 
     @GetMapping("/home")
@@ -48,5 +53,10 @@ public class MyController {
     public String deleteCourse(@PathVariable long id){
         this.courseService.deleteById(id);
         return "Delete done for id ==="+id;
+    }
+
+    @GetMapping("/cat-fact")
+    public CatFactResponse getCatFact(){
+        return catService.getCatFact();
     }
 }
